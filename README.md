@@ -10,7 +10,6 @@ In this project, a blog application will be implemented using Ruby on Rails Fraw
 - PostgreSQL
 
 ## Getting Started
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 - Ruby 3.1.2 or newer
@@ -24,14 +23,14 @@ To get a local copy up and running follow these simple example steps.
     cd Blog/
 
 ### Install
-     bundle install
-     npm install
+    bundle install
+    npm install
 
 ### Usage
 
 Execute command:
 
-  rails server
+    rails server
 
 ## Authors
 
