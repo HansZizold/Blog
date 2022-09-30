@@ -26,13 +26,21 @@ body {
 .posts {
   margin: 16px 0 16px 40px;
   max-width: 86vw;
-  height: 144px;
   padding: 16px;
   border: 2px solid black;
 }
 
+.post_header {
+  display: flex;
+  flex-direction: row;
+}
+
 .name_post {
-  margin: 8px 0 32px 0;
+  margin: 8px 16px 8px 0;
+}
+
+.like_button {
+  margin: 10px 0;
 }
 
 .post_text {
@@ -43,6 +51,12 @@ body {
   text-align: right;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 button {
-  margin: 16px 0 48px 600px;
+  margin: 16px 24px 48px;
 }
