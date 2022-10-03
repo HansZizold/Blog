@@ -27,4 +27,8 @@ RSpec.describe 'Post Index', type: :feature do
   it "shows user's profile picture" do
     expect(page).to have_selector("img[src='#{@user.photo}']")
   end
+
+  it "shows the user's username" do
+    expect(page).to have_content("#{@user.name}")
+  end
 end
