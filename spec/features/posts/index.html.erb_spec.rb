@@ -55,4 +55,9 @@ RSpec.describe 'Post Index', type: :feature do
   it "shows comments and likes counts" do
     expect(page).to have_content("Comments: #{@post3.comment_counter}, Likes: #{@post3.like_counter}")
   end
+
+  it 'redirects  to user profile after clicking a post' do
+    click_link(@post1)
+    expect(page).to have_content('Create Comment)
+  end
 end
