@@ -40,6 +40,12 @@ Execute command:
 - Twitter:[@twitterhandle](https://twitter.com/hanzio27) 
 - LinkedIn:[LinkedIn](https://www.linkedin.com/in/hans-paul-zizold-37129037/) 
 
+👤 **Emmanuel Orji-Ihuoma**
+
+ - GitHub:[@githubhandle](https://github.com/emmiiorji) 
+- Twitter:[@twitterhandle](https://twitter.com/emmiiorji) 
+- LinkedIn:[LinkedIn](https://www.linkedin.com/in/orji-emmanuel/) 
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
