@@ -23,4 +23,8 @@ RSpec.describe 'Post Index', type: :feature do
     @first_comments = [comment1, comment2, comment3]
     visit posts_path(@user.id)
   end
+
+  it "shows user's profile picture" do
+    expect(page).to have_selector("img[src='#{@user.photo}']")
+  end
 end
