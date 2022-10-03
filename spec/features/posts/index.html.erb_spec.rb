@@ -35,4 +35,9 @@ RSpec.describe 'Post Index', type: :feature do
   it "shows the number of posts the user has written." do
     expect(page).to have_content("Number of posts: #{@user.posts_counter}")
   end
+
+  it "shows a post title" do
+    title_element = find("h2.name_post")
+    expect(title_element).to have_content("#{@post1.title}")
+  end
 end
