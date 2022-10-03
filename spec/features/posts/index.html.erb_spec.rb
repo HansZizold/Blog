@@ -45,4 +45,10 @@ RSpec.describe 'Post Index', type: :feature do
     title_element = find("h2.name_post")
     expect(title_element).to have_content("#{@post1.text[..200]}")
   end
+
+  it "shows first comments of a post" do
+    @first_comments.each |comment| do
+      expect(page).to have_content(comment.text)
+    end
+  end
 end
