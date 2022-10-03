@@ -51,4 +51,8 @@ RSpec.describe 'Post Index', type: :feature do
       expect(page).to have_content(comment.text)
     end
   end
+
+  it "shows comments and likes counts" do
+    expect(page).to have_content("Comments: #{@post3.comment_counter}, Likes: #{@post3.like_counter}")
+  end
 end
