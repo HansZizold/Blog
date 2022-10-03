@@ -40,4 +40,9 @@ RSpec.describe 'Post Index', type: :feature do
     title_element = find("h2.name_post")
     expect(title_element).to have_content("#{@post1.title}")
   end
+
+  it "shows part of the post body" do
+    title_element = find("h2.name_post")
+    expect(title_element).to have_content("#{@post1.text[..200]}")
+  end
 end
