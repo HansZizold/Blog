@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     @users = User.all
     @user = User.find(params[:user_id])
     @posts = Post.where(author_id: params[:user_id])
-    @comments = Comment.all
+    @comments = Comment.all.includes(:post)
   end
 
   def show
