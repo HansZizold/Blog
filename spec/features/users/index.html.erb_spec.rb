@@ -13,6 +13,9 @@ RSpec.describe 'User Index', type: :feature do
       bio: 'Law Student'
     )
     @users = [user1, user2]
+    @user1_url = "a[href = '#{user_path(user1.id)}']"
+    @user2_url = "a[href = '#{user_path(user2.id)}']"
+
     visit users_path
   end
 
@@ -24,8 +27,13 @@ RSpec.describe 'User Index', type: :feature do
     end
   end
 
-  it 'changes to user profile after clicking on a user name' do
-    click_link(@users.first.name)
+  it "When I click on a user, I am redirected to that user's show page" do
+    find(@user1_url).click
     expect(page).to have_content('Systems Engineering Student')
+  end
+
+  it "When I click on a user, I am redirected to that user's show page" do
+    find(@user2_url).click
+    expect(page).to have_content('Law Student')
   end
 end

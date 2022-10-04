@@ -18,10 +18,10 @@ RSpec.describe 'User Show', type: :feature do
   end
 
   it 'shows the right content' do
-      expect(page).to have_content(@user.name)
-      expect(page).to have_css("img[src*='#{@user.photo}']")
-      expect(page).to have_content("Number of posts: #{@user.posts_counter}")
-      expect(page).to have_content(@user.bio)
+    expect(page).to have_content(@user.name)
+    expect(page).to have_css("img[src*='#{@user.photo}']")
+    expect(page).to have_content("Number of posts: #{@user.posts_counter}")
+    expect(page).to have_content(@user.bio)
   end
 
   it 'shows the three posts' do
@@ -33,7 +33,7 @@ RSpec.describe 'User Show', type: :feature do
 
   it 'check the prescence of the posts button' do
     button = find("#{@posts_url} button")
-    expect(button).to have_text("See all posts")
+    expect(button).to have_text('See all posts')
     expect(page).to have_selector(@posts_url)
   end
 
