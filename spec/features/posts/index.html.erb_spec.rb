@@ -52,4 +52,9 @@ RSpec.describe 'Post Index', type: :feature do
     click_link(@post1.title)
     expect(page).to have_selector("input[type=submit][value='Like']")
   end
+
+  it 'check for the pagination button' do
+    button = find('.pagination')
+    expect(button).to have_text('Pagination')
+  end
 end
