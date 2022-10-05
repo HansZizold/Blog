@@ -20,7 +20,7 @@ In this project, a blog application will be implemented using Ruby on Rails Fraw
 
 ### Setup
     git clone https://github.com/HansZizold/Blog
-    cd Blog/
+    cd ./Blog
 
 ### Install
     bundle install
