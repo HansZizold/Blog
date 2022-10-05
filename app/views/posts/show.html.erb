@@ -1,0 +1,33 @@
+<body>
+  <div class="main">
+    <div class="posts_complete">
+      <div class="post_title">
+        <div class="post_header">
+          <h2 class="name_post"><%= @post.title %> by <%= @user.name %></h2>
+          <div class='like_button'>
+            <%= form_with url: like_url(@user, @post), method: :post do |form| %>
+              <% form.submit 'Like' %>
+            <% end %>
+          </div>
+        </div>
+        <p class="comments_likes">Comments: <%= @post.comment_counter %>, Likes: <%= @post.like_counter %></p>
+      </div>
+      <p class="post_text"><%= @post.text %></p>
+      <%= form_with url: post_url(@user, @post), method: :post, local: true, scope: :comment do |form| %>      
+        <div>
+          <%= form.label :text %>
+          <%= form.text_field :text %>
+        </div>
+        <%= form.submit :'Create Comment' %>
+      <% end %>
+    </div>
+
+    <div class="comments">
+      <% @comments.each do |comment| %>
+        <p class="comment_text"><%= @users[comment.author_id - 1].name %>: <%= comment.text %></p>
+      <% end %>
+      <%= link_to "Back to Posts", posts_path(@user.id)%>
+    </div>
+  </div>
+</body> 
+</html>

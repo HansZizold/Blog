@@ -1,0 +1,43 @@
+<body>
+  <div class="main">
+    <div class="user">
+      <% photo = "../../#{@user.photo}" %>
+      <img src=<%= photo %> alt="Goku" class="user_photo">
+      <div class="user_name">
+        <p class="name"><%= @user.name %></p>
+        <p class="post">Number of posts: <%= @user.posts_counter %></p>
+      </div>
+    </div>
+  
+    <% @posts.each do |post| %>
+      <div class="posts">
+        <%= link_to post_path(post.author_id, post.id) do %>
+          <h2 class="name_post">Post #<%= post.id %>: <%= post.title %></h2>
+        <% end %>
+        <p class="post_text"><%= post.text %></p>
+        <p class="post_author">
+          Comments: <%= post.comment_counter %>, Likes: <%= post.like_counter %>
+        </p>
+      </div>
+
+      <div class="comments">
+        <% @comments.each do |comment| %>
+          <% if post.id == comment.post.id %>
+            <p class="comment_text"><%= @users[comment.author_id - 1].name %>: <%= comment.text %></p>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="buttons">
+      <button class="pagination">Pagination</button>
+      <%= link_to new_post_path do %>
+        <button>Add a new post</button>
+      <% end %>
+      <%= link_to users_path do %>
+        <button>Main Page</button>
+      <% end %>
+    </div>
+  </div>
+</body>
+</html>
