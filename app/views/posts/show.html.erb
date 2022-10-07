@@ -5,15 +5,20 @@
         <div class="post_header">
           <h2 class="name_post"><%= @post.title %> by <%= @user.name %></h2>
           <div class='like_button'>
-            <%= form_with url: like_url(@user, @post), method: :post do |form| %>
+            <%= form_with url: user_post_likes_path(@user, @post), method: :post do |form| %>
               <% form.submit 'Like' %>
             <% end %>
           </div>
         </div>
         <p class="comments_likes">Comments: <%= @post.comment_counter %>, Likes: <%= @post.like_counter %></p>
+        <% if can? :delete_post, @post %>
+          <%= form_with url: user_post_path, method: :delete do |form| %>
+            <% form.submit 'Delete Post' %>
+          <% end %>
+        <% end %>
       </div>
       <p class="post_text"><%= @post.text %></p>
-      <%= form_with url: post_url(@user, @post), method: :post, local: true, scope: :comment do |form| %>      
+      <%= form_with url: user_post_comments_path(@user, @post), method: :post, scope: :comment do |form| %>      
         <div>
           <%= form.label :text %>
           <%= form.text_field :text %>
@@ -24,9 +29,16 @@
 
     <div class="comments">
       <% @comments.each do |comment| %>
-        <p class="comment_text"><%= @users[comment.author_id - 1].name %>: <%= comment.text %></p>
+        <div class="comment">
+          <p class="comment_text"><%= @users[comment.author_id - 1].name %>: <%= comment.text %></p>
+          <% if can? :delete_comment, comment %>
+            <%= form_with url: user_post_comment_path(comment.author, @post, comment), method: :delete do |form| %>
+              <% form.submit 'Delete' %>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
-      <%= link_to "Back to Posts", posts_path(@user.id)%>
+      <%= link_to "Back to Posts", user_posts_path(@user.id)%>
     </div>
   </div>
 </body> 

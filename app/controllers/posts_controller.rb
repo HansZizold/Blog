@@ -14,19 +14,37 @@ class PostsController < ApplicationController
   end
 
   def new
-    @first_user = current_user
     @post = Post.new
   end
 
   def create
-    @first_user = current_user
-    @post = @first_user.posts.create(post_params)
+    author = current_user
+    post = Post.new(params.require(:post).permit(:author, :title, :text))
+    post.author = author
 
-    if @post.save
-      redirect_to posts_path(@first_user.id)
+    if post.save
       flash[:success] = 'Post saved successfully'
+      redirect_to user_posts_path(author)
     else
       flash.now[:error] = 'Error: Post could not be saved'
+      render :new
+    end
+  end
+
+  def destroy
+    author = current_user
+    post = Post.find(params[:id])
+    comments = Comment.where(post_id: params[:id])
+    comments.each(&:destroy)
+    likes = Like.where(post_id: params[:id])
+    likes.each(&:destroy)
+    post.destroy
+
+    if post.destroy
+      flash[:success] = 'Post saved successfully'
+      redirect_to user_posts_path(author)
+    else
+      flash.now[:error] = 'Error: Post could not be deleted'
       render :new
     end
   end

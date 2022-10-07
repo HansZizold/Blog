@@ -14,10 +14,14 @@ body {
   border: 2px solid black;
 }
 
+.comment {
+  display: flex;
+  flex-direction: row;
+}
+
 .comment_text {
   font-size: 16px;
-  margin-bottom: 4px;
-  margin-top: 4px;
+  margin: 4px 16px 4px 0;
 }
 
 .posts_complete {
